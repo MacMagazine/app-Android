@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">app-Android</string>
+    <string name="app_name">MacMagazine</string>
+
+    <!-- main bottom navigation -->
+    <string name="menu_title_posts">Posts</string>
 </resources>
