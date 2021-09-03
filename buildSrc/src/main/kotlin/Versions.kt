@@ -5,10 +5,11 @@ object Versions {
     const val kotlin = "1.5.21"
 
     //libs
-    const val coreKtx = "1.6.0"
     const val appcompat = "1.3.1"
-    const val materialDesign = "1.4.0"
     const val constraintLayout = "2.1.0"
+    const val coreKtx = "1.6.0"
+    const val materialDesign = "1.4.0"
+    const val nav_version = "2.3.5"
 
     //test
     const val junit = "4.13.2"

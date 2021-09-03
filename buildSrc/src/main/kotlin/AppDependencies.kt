@@ -8,6 +8,10 @@ object AppDependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val materialDesign = "com.google.android.material:material:${Versions.materialDesign}"
 
+    // navigation component
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
+
     //test libs
     const val junit = "junit:junit:${Versions.junit}"
     const val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
