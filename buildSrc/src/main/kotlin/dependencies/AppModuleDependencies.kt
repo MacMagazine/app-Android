@@ -4,6 +4,7 @@ val appModuleDependencies = arrayListOf<String>().apply {
     add(AppDependencies.appcompat)
     add(AppDependencies.coreKtx)
     add(AppDependencies.constraintLayout)
+    add(AppDependencies.glide)
     add(AppDependencies.koinCore)
     add(AppDependencies.koinScope)
     add(AppDependencies.kotlinStdLib)

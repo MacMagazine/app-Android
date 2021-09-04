@@ -19,5 +19,7 @@ object AppDependencies {
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     const val materialDesign = "com.google.android.material:material:${Versions.materialDesign}"
 }
