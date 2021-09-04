@@ -50,6 +50,8 @@ android {
 dependencies {
     implementation(appModuleDependencies)
 
+    annotationProcessor(AppDependencies.glideCompiler)
+
     testImplementation(testDependencies)
 
     androidTestImplementation(androidTestDependencies)
