@@ -1,9 +1,10 @@
-package br.com.macmagazine
+package br.com.macmagazine.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import br.com.macmagazine.R
 import br.com.macmagazine.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
