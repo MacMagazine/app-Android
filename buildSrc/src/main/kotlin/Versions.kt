@@ -8,6 +8,7 @@ object Versions {
     const val appcompat = "1.3.1"
     const val constraintLayout = "2.1.0"
     const val coreKtx = "1.6.0"
+    const val koin_version = "3.1.2"
     const val materialDesign = "1.4.0"
     const val nav_version = "2.3.5"
 
