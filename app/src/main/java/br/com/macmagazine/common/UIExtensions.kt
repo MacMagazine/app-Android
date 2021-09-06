@@ -4,7 +4,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 
 fun AppCompatImageView.loadFromUrl(url: String) {
-    Glide.with(context)
+    Glide.with(this)
         .load(url)
         .into(this)
 }
