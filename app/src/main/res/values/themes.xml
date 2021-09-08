@@ -7,8 +7,8 @@
 
     </style>
 
-    <style name="ShapeAppearanceOverlay.App.CornerSize10" parent="">
-        <item name="cornerSize">10dp</item>
+    <style name="ShapeAppearanceOverlay.App.CornerSize5" parent="">
+        <item name="cornerSize">5dp</item>
     </style>
 
 </resources>
