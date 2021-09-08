@@ -48,6 +48,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+
     implementation(appModuleDependencies)
 
     annotationProcessor(AppDependencies.glideCompiler)
