@@ -6,6 +6,5 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-include(":app")
+include(":app", ":data", ":domain" )
 rootProject.name = "app-Android"
-include(":domain")

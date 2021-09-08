@@ -1,12 +1,10 @@
-import dependencies.androidTestDependencies
-import dependencies.appModuleDependencies
-import dependencies.testDependencies
 import extensions.implementation
 import extensions.testImplementation
-import extensions.androidTestImplementation
+import dependencies.testDependencies
+import dependencies.dataModuleDependencies
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     kotlin("android")
 }
 
@@ -14,11 +12,8 @@ android {
     compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "br.com.macmagazine"
         minSdk =  AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
 
         testInstrumentationRunner  = AppConfig.androidTestInstrumentation
     }
@@ -33,10 +28,6 @@ android {
         }
     }
 
-    viewBinding {
-        android.buildFeatures.viewBinding = true
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -48,14 +39,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
     implementation(project(":domain"))
 
-    implementation(appModuleDependencies)
-
-    annotationProcessor(AppDependencies.glideCompiler)
+    implementation(dataModuleDependencies)
 
     testImplementation(testDependencies)
-
-    androidTestImplementation(androidTestDependencies)
 }
