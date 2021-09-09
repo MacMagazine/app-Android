@@ -7,6 +7,13 @@ object AppDependencies {
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
 
+    // network
+    const val okhttp = "com.squareup.okhttp:okhttp:2.5.0"
+    const val okhttpUrlConnection = "com.squareup.okhttp:okhttp-urlconnection:1.6.0"
+
+    // rss
+    const val pkRss = "com.pkmmte.pkrss:pkrss:1.2"
+
     // std lib
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 
