@@ -12,6 +12,7 @@ object Versions {
     const val koin_version = "3.1.2"
     const val materialDesign = "1.4.0"
     const val nav_version = "2.3.5"
+    const val paging_version = "3.0.1"
 
     //test
     const val junit = "4.13.2"

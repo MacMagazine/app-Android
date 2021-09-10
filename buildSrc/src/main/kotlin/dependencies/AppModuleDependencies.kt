@@ -11,4 +11,5 @@ val appModuleDependencies = arrayListOf<String>().apply {
     add(AppDependencies.materialDesign)
     add(AppDependencies.navigationFragment)
     add(AppDependencies.navigationUi)
+    add(AppDependencies.paging)
 }

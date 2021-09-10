@@ -4,6 +4,6 @@ import br.com.macmagazine.data.model.PostScraped
 
 interface Scraper {
 
-    suspend fun getPosts(): List<PostScraped>
+    suspend fun getPosts(page: Int): List<PostScraped>
 
 }

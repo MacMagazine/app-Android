@@ -4,6 +4,6 @@ import br.com.macmagazine.domain.entity.Post
 
 interface NewsRepository {
 
-    suspend fun getPosts(): List<Post>
+    suspend fun getPosts(page: Int): List<Post>
 
 }

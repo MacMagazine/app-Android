@@ -7,6 +7,9 @@ object AppDependencies {
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
 
+    // pagination
+    const val paging = "androidx.paging:paging-runtime:${Versions.paging_version}"
+
     // rss
     const val rssParser = "com.prof18.rssparser:rssparser:3.1.5"
 

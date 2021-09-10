@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.macmagazine.databinding.FragmentPostListBinding
-import br.com.macmagazine.model.Post
+import br.com.macmagazine.model.PostUi
 import br.com.macmagazine.ui.main.post.list.adapter.PostAdapter
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
@@ -18,6 +20,8 @@ class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
 
     private lateinit var binding: FragmentPostListBinding
 
+    private lateinit var postAdapter: PostAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentPostListBinding.inflate(inflater, container, false)
         return binding.root
@@ -25,23 +29,28 @@ class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObservers()
+        setupRecyclerView()
+        collectUiState()
     }
 
-    override fun onPostClick(post: Post) {
+    override fun onPostClick(post: PostUi) {
         TODO("Not yet implemented")
     }
 
-    private fun setupObservers() {
-        viewModel.posts.observe(viewLifecycleOwner, Observer(::setupRecyclerView))
+    private fun setupRecyclerView() {
+        postAdapter = PostAdapter(this@PostListFragment)
+        with(binding.rvPosts) {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = postAdapter
+        }
     }
 
-    private fun setupRecyclerView(posts: List<Post>) {
-        val categoryAdapter = PostAdapter(posts, this@PostListFragment)
-        with(binding.rvPosts) {
-            adapter = categoryAdapter
-
-            layoutManager = LinearLayoutManager(requireContext())
+    private fun collectUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getPosts().collectLatest { movies ->
+                postAdapter.submitData(movies)
+            }
         }
     }
 }

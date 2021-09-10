@@ -8,12 +8,12 @@ import com.prof.rssparser.Parser
 class RssScraper(
     private val context: Context
 ) : Scraper {
-    override suspend fun getPosts(): List<PostScraped> {
+    override suspend fun getPosts(page: Int): List<PostScraped> {
         val parser = Parser.Builder()
             .context(context)
             .build()
 
-        val channel = parser.getChannel("https://macmagazine.com.br/feed?paged=0")
+        val channel = parser.getChannel("https://macmagazine.com.br/feed/?paged=$page")
 
         return channel.articles.toPostScrapedList()
     }

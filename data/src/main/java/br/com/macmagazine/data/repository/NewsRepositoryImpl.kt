@@ -8,5 +8,5 @@ import br.com.macmagazine.domain.repository.NewsRepository
 class NewsRepositoryImpl(
     private val scraper: Scraper
 ) : NewsRepository {
-    override suspend fun getPosts(): List<Post> = scraper.getPosts().toPostList()
+    override suspend fun getPosts(page: Int): List<Post> = scraper.getPosts(page).toPostList()
 }

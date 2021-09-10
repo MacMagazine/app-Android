@@ -1,14 +1,25 @@
 package br.com.macmagazine.ui.main.post.list
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.macmagazine.model.Post
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import androidx.paging.map
+import br.com.macmagazine.mapper.toPostUi
+import br.com.macmagazine.model.PostUi
+import br.com.macmagazine.paging.PostPagingDataSource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
-class PostListViewModel : ViewModel() {
+class PostListViewModel(
+    private val postsDataSource: PostPagingDataSource
+) : ViewModel() {
 
-    val posts = MutableLiveData<List<Post>>(
-        listOf(
-            Post("Title", "Description", "https://cdn.cdkeys.com/700x700/media/catalog/product/t/h/the_legend_of_zelda_-_breath_of_the_wild_switch.jpg")
-        )
-    )
+    fun getPosts(): Flow<PagingData<PostUi>> {
+        return postsDataSource.getPosts()
+            .map { pagingData ->
+                pagingData.map { it.toPostUi() }
+            }
+            .cachedIn(viewModelScope)
+    }
 }
