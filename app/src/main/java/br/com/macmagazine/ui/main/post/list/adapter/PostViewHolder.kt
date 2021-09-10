@@ -2,6 +2,7 @@ package br.com.macmagazine.ui.main.post.list.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import br.com.macmagazine.common.loadFromUrl
+import br.com.macmagazine.common.setFormattingText
 import br.com.macmagazine.databinding.ItemPostBinding
 import br.com.macmagazine.model.PostUi
 
@@ -12,7 +13,7 @@ class PostViewHolder(
 
     fun bind(post: PostUi) {
         binding.tvPostTitle.text = post.title
-        binding.tvPostDescription.text = post.description
+        binding.tvPostDescription.setFormattingText(post.description)
         binding.ivPostImage.loadFromUrl(post.imageUrl)
 
         binding.cvContainer.setOnClickListener {
