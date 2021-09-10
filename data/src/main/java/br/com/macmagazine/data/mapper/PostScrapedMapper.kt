@@ -7,6 +7,6 @@ fun List<PostScraped>.toPostList() = this.map { postScraped ->
     Post(
         title = postScraped.title,
         description = postScraped.description,
-        imageUrl = postScraped.imageUrl
+        imageUrl = postScraped.image
     )
 }
