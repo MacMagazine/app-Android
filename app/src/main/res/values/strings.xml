@@ -3,4 +3,8 @@
 
     <!-- main bottom navigation -->
     <string name="menu_title_posts">Posts</string>
+
+    <!-- post list -->
+    <string name="error_load_message">Erro ao carregar a lista de notícias</string>
+    <string name="error_load_retry">Tentar novamente</string>
 </resources>
