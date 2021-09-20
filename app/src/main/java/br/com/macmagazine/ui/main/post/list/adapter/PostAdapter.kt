@@ -8,6 +8,7 @@ import br.com.macmagazine.databinding.ItemPostBinding
 import br.com.macmagazine.databinding.ItemPostHighlightedBinding
 import br.com.macmagazine.model.PostUi
 import br.com.macmagazine.ui.main.post.list.adapter.viewholder.PostHighlightedViewHolder
+import br.com.macmagazine.ui.main.post.list.adapter.viewholder.PostViewHolder
 
 class PostAdapter(
     private val listener: PostAdapterListener
