@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.macmagazine.databinding.FragmentPostListBinding
 import br.com.macmagazine.model.PostUi
 import br.com.macmagazine.ui.main.post.list.adapter.PostAdapter
+import br.com.macmagazine.ui.main.post.list.adapter.PostLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,6 +43,11 @@ class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
         with(binding.rvPosts) {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
+
+            postAdapter.withLoadStateFooter(
+                footer = PostLoadStateAdapter { postAdapter.retry() }
+            )
+
             adapter = postAdapter
         }
     }
