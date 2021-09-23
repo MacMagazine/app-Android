@@ -6,4 +6,5 @@ val dataModuleDependencies = arrayListOf<String>().apply {
     add(AppDependencies.koinScope)
     add(AppDependencies.kotlinStdLib)
     add(AppDependencies.rssParser)
+    add(AppDependencies.threeTenBP)
 }

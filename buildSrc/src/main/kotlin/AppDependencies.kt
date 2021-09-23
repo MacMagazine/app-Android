@@ -1,4 +1,7 @@
 object AppDependencies {
+    // date
+    const val threeTenBP = "com.jakewharton.threetenabp:threetenabp:1.3.1"
+
     // dependency injection
     const val koinCore = "io.insert-koin:koin-core:${Versions.koin_version}"
     const val koinScope = "io.insert-koin:koin-android:${Versions.koin_version}"
