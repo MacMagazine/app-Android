@@ -5,7 +5,7 @@ import br.com.macmagazine.model.PostUi
 
 class PostDiffCallBack : DiffUtil.ItemCallback<PostUi>(){
     override fun areItemsTheSame(oldItem: PostUi, newItem: PostUi): Boolean {
-        return oldItem.title == newItem.title
+        return oldItem.guid == newItem.guid
     }
 
     override fun areContentsTheSame(oldItem: PostUi, newItem: PostUi): Boolean {

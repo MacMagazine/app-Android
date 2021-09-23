@@ -7,6 +7,7 @@ private const val POST_HIGHLIGHTED = "Destaques"
 
 fun List<PostScraped>.toPostList() = this.map { postScraped ->
     Post(
+        guid = postScraped.guid,
         title = postScraped.title,
         description = postScraped.description,
         imageUrl = postScraped.image,
