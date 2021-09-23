@@ -29,6 +29,7 @@ android {
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -40,6 +41,8 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+
+    coreLibraryDesugaring(AppDependencies.androidDesugaring)
 
     implementation(dataModuleDependencies)
 
