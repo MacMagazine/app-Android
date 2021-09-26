@@ -1,6 +1,6 @@
 package br.com.macmagazine.domain.entity
 
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 data class Post(
     val guid: String,
@@ -8,5 +8,5 @@ data class Post(
     val description: String,
     val imageUrl: String,
     val highlighted: Boolean,
-    val pubDate: LocalDateTime
+    val pubDate: LocalDate
 )
