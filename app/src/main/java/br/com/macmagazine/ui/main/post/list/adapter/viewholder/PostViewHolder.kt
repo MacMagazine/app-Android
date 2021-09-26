@@ -12,13 +12,13 @@ class PostViewHolder(
     private val listener: PostAdapter.PostAdapterListener
 ): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(post: PostUi) {
-        binding.tvPostTitle.text = post.title
-        binding.tvPostDescription.setFormattingText(post.description)
-        binding.ivPostImage.loadFromUrl(post.imageUrl)
+    fun bind(item: PostUi.PostItemUi) {
+        binding.tvPostTitle.text = item.title
+        binding.tvPostDescription.setFormattingText(item.description)
+        binding.ivPostImage.loadFromUrl(item.imageUrl)
 
         binding.cvContainer.setOnClickListener {
-            listener.onPostClick(post)
+            listener.onPostClick(item)
         }
     }
 }
