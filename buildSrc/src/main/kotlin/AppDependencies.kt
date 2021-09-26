@@ -1,6 +1,5 @@
 object AppDependencies {
     // date
-    const val threeTenBP = "com.jakewharton.threetenabp:threetenabp:1.3.1"
     const val androidDesugaring = "com.android.tools:desugar_jdk_libs:1.1.5"
 
     // dependency injection
