@@ -12,7 +12,7 @@ sealed class PostUi {
         val pubDate: LocalDate
     ) : PostUi()
 
-    data class PostHeaderDateUi(
+    data class PostSeparatorDateUi(
         val description: String
     ) : PostUi()
 }

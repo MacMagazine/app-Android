@@ -46,12 +46,12 @@ class PostListViewModel(
             .cachedIn(viewModelScope)
     }
 
-    private fun createDateSeparator(date: LocalDate): PostUi.PostHeaderDateUi {
+    private fun createDateSeparator(date: LocalDate): PostUi.PostSeparatorDateUi {
         val label = when {
             date.isToday() -> "HOJE"
             date.isYesterday() -> "ONTEM"
             else -> date.toFormattedDate().uppercase()
         }
-        return PostUi.PostHeaderDateUi(label)
+        return PostUi.PostSeparatorDateUi(label)
     }
 }

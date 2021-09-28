@@ -36,7 +36,7 @@ class PostAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = getItem(position)) {
-            is PostUi.PostHeaderDateUi -> {
+            is PostUi.PostSeparatorDateUi -> {
                 if (holder is PostHeaderViewHolder) {
                     holder.bind(item)
                 }
@@ -53,7 +53,7 @@ class PostAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (val item = getItem(position)) {
-            is PostUi.PostHeaderDateUi -> VIEW_TYPE_HEADER
+            is PostUi.PostSeparatorDateUi -> VIEW_TYPE_HEADER
             is PostUi.PostItemUi -> {
                 if (item.highlighted) {
                     VIEW_TYPE_HIGHLIGHTED

@@ -8,7 +8,7 @@ class PostHeaderViewHolder(
     private val binding: ItemPostHeaderDateBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: PostUi.PostHeaderDateUi) {
+    fun bind(item: PostUi.PostSeparatorDateUi) {
         binding.tvPostHeader.text = item.description
     }
 }
