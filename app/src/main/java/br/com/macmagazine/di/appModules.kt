@@ -16,7 +16,7 @@ private val dataModule = module {
     }
 
     single<Scraper> {
-        RssScraper(get())
+        RssScraper()
     }
 }
 
