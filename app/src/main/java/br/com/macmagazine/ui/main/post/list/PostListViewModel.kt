@@ -24,20 +24,19 @@ class PostListViewModel(
         return postsDataSource.getPosts()
             .map { pagingData -> pagingData.map { it.toPostItemUi() } }
             .map {
-                it.insertSeparators<PostUi.PostItemUi, PostUi>{ postBefore, postAfter ->
-                    if (postAfter == null) {
+                it.insertSeparators<PostUi.PostItemUi, PostUi>{ before, after ->
+                    if (after == null) {
                         // we're at the end of the list
                         return@insertSeparators null
                     }
 
-                    if (postBefore == null) {
+                    if (before == null) {
                         // we're at the beginning of the list
-                        createDateSeparator(postAfter.pubDate)
-                        return@insertSeparators createDateSeparator(postAfter.pubDate)
+                        return@insertSeparators createDateSeparator(after.pubDate)
                     }
 
-                    if (postAfter.pubDate.isAfter(postBefore.pubDate)) {
-                        createDateSeparator(postAfter.pubDate)
+                    if (after.pubDate < before.pubDate) {
+                        createDateSeparator(after.pubDate)
                     } else {
                         null
                     }
