@@ -2,8 +2,10 @@ package br.com.macmagazine.ui.main.post.detail
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
+import br.com.macmagazine.BuildConfig
 import br.com.macmagazine.common.extensions.setupToolbarWithBackButton
 import br.com.macmagazine.databinding.ActivityPostDetailBinding
 import br.com.macmagazine.ui.main.post.detail.webviewclient.CustomWebViewClient
@@ -27,6 +29,7 @@ class PostDetailActivity : AppCompatActivity() {
 
         setupToolbarWithBackButton(binding.includeToolbar.toolbar)
 
+        setupWebView()
         setupObservables()
     }
 
@@ -38,12 +41,16 @@ class PostDetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupObservables() {
-        viewModel.detailUrl.observe(this) { loadUrl(it) }
+    private fun setupWebView() {
+        WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG)
+        binding.wvPostDetailContainer.settings.javaScriptEnabled = true
+        binding.wvPostDetailContainer.settings.userAgentString = "MacMagazine"
+        binding.wvPostDetailContainer.webViewClient = CustomWebViewClient()
     }
 
-    private fun loadUrl(url: String) {
-        binding.wvPostDetailContainer.webViewClient = CustomWebViewClient()
-        binding.wvPostDetailContainer.loadUrl(url)
+    private fun setupObservables() {
+        viewModel.detailUrl.observe(this) { url ->
+            binding.wvPostDetailContainer.loadUrl(url)
+        }
     }
 }
