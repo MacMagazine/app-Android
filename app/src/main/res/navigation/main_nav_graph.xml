@@ -9,6 +9,18 @@
         android:id="@+id/postListFlow"
         android:name="br.com.macmagazine.ui.main.post.list.PostListFragment"
         android:label="PostListFragment"
-        tools:layout="@layout/fragment_post_list" />
+        tools:layout="@layout/fragment_post_list" >
+
+        <action
+            android:id="@+id/action_postListFlow_to_postDetailActivity"
+            app:destination="@id/postDetailActivity" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/postDetailActivity"
+        android:name="br.com.macmagazine.ui.main.post.detail.PostDetailActivity"
+        android:label="PostDetailActivity"
+        tools:layout="@layout/activity_post_detail" />
 
 </navigation>
