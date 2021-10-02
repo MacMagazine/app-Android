@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.macmagazine.databinding.FragmentPostListBinding
 import br.com.macmagazine.model.PostUi
@@ -14,10 +15,13 @@ import br.com.macmagazine.ui.main.post.list.adapter.PostLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
 
-    private val viewModel: PostListViewModel by viewModel()
+    private val viewModel: PostListViewModel by viewModel {
+        parametersOf(findNavController())
+    }
 
     private lateinit var binding: FragmentPostListBinding
 

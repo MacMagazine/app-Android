@@ -14,13 +14,15 @@ import br.com.macmagazine.common.extensions.toFormattedDate
 import br.com.macmagazine.mapper.toPostItemUi
 import br.com.macmagazine.model.PostUi
 import br.com.macmagazine.paging.PostPagingDataSource
+import br.com.macmagazine.route.ScreenRouter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
 
 class PostListViewModel(
     private val postsDataSource: PostPagingDataSource,
-    private val resourceProvider: ResourceProvider
+    private val resourceProvider: ResourceProvider,
+    private val router: ScreenRouter
 ) : ViewModel() {
 
     fun getPosts(): Flow<PagingData<PostUi>> {
