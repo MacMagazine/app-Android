@@ -35,8 +35,8 @@ class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
         collectUiState()
     }
 
-    override fun onPostClick(post: PostUi) {
-        TODO("Not yet implemented")
+    override fun onPostClick(item: PostUi.PostItemUi) {
+       viewModel.navigateToDetail(item)
     }
 
     private fun setupSwipeRefresh() {

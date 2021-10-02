@@ -21,6 +21,10 @@
         android:id="@+id/postDetailActivity"
         android:name="br.com.macmagazine.ui.main.post.detail.PostDetailActivity"
         android:label="PostDetailActivity"
-        tools:layout="@layout/activity_post_detail" />
+        tools:layout="@layout/activity_post_detail" >
+        <argument
+            android:name="post"
+            app:argType="br.com.macmagazine.model.PostUi$PostItemUi" />
+    </activity>
 
 </navigation>

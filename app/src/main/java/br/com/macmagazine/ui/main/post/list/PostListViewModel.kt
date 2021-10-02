@@ -48,6 +48,10 @@ class PostListViewModel(
             .cachedIn(viewModelScope)
     }
 
+    fun navigateToDetail(item: PostUi.PostItemUi) {
+        router.fromPostListToPostDetail(item)
+    }
+
     fun invalidatePostsDataSource() {
         postsDataSource.invalidate()
     }

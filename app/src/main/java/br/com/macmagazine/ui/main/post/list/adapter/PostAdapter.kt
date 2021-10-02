@@ -66,7 +66,7 @@ class PostAdapter(
     }
 
     interface PostAdapterListener {
-        fun onPostClick(post: PostUi)
+        fun onPostClick(item: PostUi.PostItemUi)
     }
 
     companion object {
