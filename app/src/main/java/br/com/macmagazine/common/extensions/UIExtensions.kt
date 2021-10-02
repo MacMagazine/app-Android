@@ -1,4 +1,4 @@
-package br.com.macmagazine.common
+package br.com.macmagazine.common.extensions
 
 import android.os.Build
 import android.text.Html

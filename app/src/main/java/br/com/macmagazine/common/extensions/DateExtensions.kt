@@ -1,4 +1,4 @@
-package br.com.macmagazine.common
+package br.com.macmagazine.common.extensions
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
