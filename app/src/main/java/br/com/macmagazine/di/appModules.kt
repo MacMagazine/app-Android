@@ -9,6 +9,7 @@ import br.com.macmagazine.data.scrap.Scraper
 import br.com.macmagazine.domain.repository.NewsRepository
 import br.com.macmagazine.paging.PostPagingDataSource
 import br.com.macmagazine.route.ScreenRouter
+import br.com.macmagazine.ui.main.post.detail.PostDetailActivityArgs
 import br.com.macmagazine.ui.main.post.detail.PostDetailViewModel
 import br.com.macmagazine.ui.main.post.list.PostListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -40,8 +41,8 @@ private val uiModule = module {
 }
 
 private val viewModelModule = module {
-    viewModel {
-        PostDetailViewModel()
+    viewModel { (args: PostDetailActivityArgs) ->
+        PostDetailViewModel(args)
     }
 
     viewModel { (navController: NavController) ->
