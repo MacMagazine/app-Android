@@ -1,9 +1,11 @@
 package br.com.macmagazine.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
 
-sealed class PostUi {
-    data class PostItemUi(
+sealed class PostUi : Parcelable {
+    @Parcelize data class PostItemUi(
         val guid: String,
         val title: String,
         val description: String,
@@ -12,7 +14,7 @@ sealed class PostUi {
         val pubDate: LocalDate
     ) : PostUi()
 
-    data class PostSeparatorDateUi(
+    @Parcelize data class PostSeparatorDateUi(
         val description: String
     ) : PostUi()
 }
