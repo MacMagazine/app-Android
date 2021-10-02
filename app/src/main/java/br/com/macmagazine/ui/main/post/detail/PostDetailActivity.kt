@@ -2,6 +2,7 @@ package br.com.macmagazine.ui.main.post.detail
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
@@ -12,7 +13,7 @@ import br.com.macmagazine.ui.main.post.detail.webviewclient.CustomWebViewClient
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class PostDetailActivity : AppCompatActivity() {
+class PostDetailActivity : AppCompatActivity(), CustomWebViewClient.WebViewListener {
 
     private val args: PostDetailActivityArgs by navArgs()
     private val viewModel: PostDetailViewModel by viewModel {
@@ -44,13 +45,24 @@ class PostDetailActivity : AppCompatActivity() {
     private fun setupWebView() {
         WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG)
         binding.wvPostDetailContainer.settings.javaScriptEnabled = true
+        binding.wvPostDetailContainer.settings.defaultTextEncodingName = "utf-8"
         binding.wvPostDetailContainer.settings.userAgentString = "MacMagazine"
-        binding.wvPostDetailContainer.webViewClient = CustomWebViewClient()
+        binding.wvPostDetailContainer.webViewClient = CustomWebViewClient(this)
     }
 
     private fun setupObservables() {
         viewModel.detailUrl.observe(this) { url ->
             binding.wvPostDetailContainer.loadUrl(url)
         }
+    }
+
+    override fun onStartLoad() {
+        binding.wvPostDetailContainer.visibility = View.INVISIBLE
+        binding.progress.show()
+    }
+
+    override fun onFinishLoad() {
+        binding.wvPostDetailContainer.visibility = View.VISIBLE
+        binding.progress.hide()
     }
 }
