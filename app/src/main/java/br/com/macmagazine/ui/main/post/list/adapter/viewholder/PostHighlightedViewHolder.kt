@@ -1,7 +1,7 @@
 package br.com.macmagazine.ui.main.post.list.adapter.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
-import br.com.macmagazine.common.loadFromUrl
+import br.com.macmagazine.common.extensions.loadFromUrl
 import br.com.macmagazine.databinding.ItemPostHighlightedBinding
 import br.com.macmagazine.model.PostUi
 import br.com.macmagazine.ui.main.post.list.adapter.PostAdapter
