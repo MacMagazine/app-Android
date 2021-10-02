@@ -7,6 +7,7 @@ data class Post(
     val title: String,
     val description: String,
     val imageUrl: String,
+    val detailUrl: String,
     val highlighted: Boolean,
     val pubDate: LocalDate
 )

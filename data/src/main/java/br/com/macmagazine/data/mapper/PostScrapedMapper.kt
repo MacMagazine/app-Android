@@ -20,6 +20,7 @@ fun List<PostScraped>.toPostList() = this.map { postScraped ->
         title = postScraped.title,
         description = postScraped.description,
         imageUrl = postScraped.image,
+        detailUrl = postScraped.link,
         highlighted = postScraped.categories.contains(POST_HIGHLIGHTED),
         pubDate = pubDateZonedTime.toLocalDate()
     )

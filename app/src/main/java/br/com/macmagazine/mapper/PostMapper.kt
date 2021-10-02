@@ -8,6 +8,7 @@ fun Post.toPostItemUi() = PostUi.PostItemUi(
     title = this.title,
     description = this.description,
     imageUrl = this.imageUrl,
+    detailUrl = this.detailUrl,
     highlighted = this.highlighted,
     pubDate = this.pubDate
 )
