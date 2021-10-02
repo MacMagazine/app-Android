@@ -30,12 +30,19 @@ class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupSwipeRefresh()
         setupRecyclerView()
         collectUiState()
     }
 
     override fun onPostClick(post: PostUi) {
         TODO("Not yet implemented")
+    }
+
+    private fun setupSwipeRefresh() {
+        binding.srlSwipePostsContainer.setOnRefreshListener {
+            viewModel.invalidatePostsDataSource()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -55,6 +62,7 @@ class PostListFragment : Fragment(), PostAdapter.PostAdapterListener {
     private fun collectUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getPosts().collectLatest { movies ->
+                binding.srlSwipePostsContainer.isRefreshing = false
                 postAdapter.submitData(movies)
             }
         }

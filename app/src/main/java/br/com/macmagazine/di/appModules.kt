@@ -5,7 +5,6 @@ import br.com.macmagazine.data.scrap.RssScraper
 import br.com.macmagazine.data.scrap.Scraper
 import br.com.macmagazine.domain.repository.NewsRepository
 import br.com.macmagazine.paging.PostPagingDataSource
-import br.com.macmagazine.paging.PostPagingSource
 import br.com.macmagazine.ui.main.post.list.PostListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -21,11 +20,7 @@ private val dataModule = module {
 }
 
 private val uiModule = module {
-    single {
-        PostPagingSource(get())
-    }
-
-    single {
+    factory {
         PostPagingDataSource(get())
     }
 }

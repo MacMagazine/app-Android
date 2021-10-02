@@ -45,6 +45,10 @@ class PostListViewModel(
             .cachedIn(viewModelScope)
     }
 
+    fun invalidatePostsDataSource() {
+        postsDataSource.invalidate()
+    }
+
     private fun createDateSeparator(date: LocalDate): PostUi.PostSeparatorDateUi {
         val label = when {
             date.isToday() -> "HOJE"
