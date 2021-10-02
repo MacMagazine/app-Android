@@ -6,9 +6,11 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.insertSeparators
 import androidx.paging.map
-import br.com.macmagazine.common.isToday
-import br.com.macmagazine.common.isYesterday
-import br.com.macmagazine.common.toFormattedDate
+import br.com.macmagazine.R
+import br.com.macmagazine.common.extensions.isToday
+import br.com.macmagazine.common.extensions.isYesterday
+import br.com.macmagazine.common.resource.ResourceProvider
+import br.com.macmagazine.common.extensions.toFormattedDate
 import br.com.macmagazine.mapper.toPostItemUi
 import br.com.macmagazine.model.PostUi
 import br.com.macmagazine.paging.PostPagingDataSource
@@ -17,7 +19,8 @@ import kotlinx.coroutines.flow.map
 import java.time.LocalDate
 
 class PostListViewModel(
-    private val postsDataSource: PostPagingDataSource
+    private val postsDataSource: PostPagingDataSource,
+    private val resourceProvider: ResourceProvider
 ) : ViewModel() {
 
     fun getPosts(): Flow<PagingData<PostUi>> {
@@ -51,10 +54,10 @@ class PostListViewModel(
 
     private fun createDateSeparator(date: LocalDate): PostUi.PostSeparatorDateUi {
         val label = when {
-            date.isToday() -> "HOJE"
-            date.isYesterday() -> "ONTEM"
-            else -> date.toFormattedDate().uppercase()
+            date.isToday() -> resourceProvider.getString(R.string.post_today_label)
+            date.isYesterday() -> resourceProvider.getString(R.string.post_yesterday_label)
+            else -> date.toFormattedDate()
         }
-        return PostUi.PostSeparatorDateUi(label)
+        return PostUi.PostSeparatorDateUi(label.uppercase())
     }
 }

@@ -1,5 +1,7 @@
 package br.com.macmagazine.di
 
+import br.com.macmagazine.common.resource.AndroidResource
+import br.com.macmagazine.common.resource.ResourceProvider
 import br.com.macmagazine.data.repository.NewsRepositoryImpl
 import br.com.macmagazine.data.scrap.RssScraper
 import br.com.macmagazine.data.scrap.Scraper
@@ -20,6 +22,10 @@ private val dataModule = module {
 }
 
 private val uiModule = module {
+    single<ResourceProvider> {
+       AndroidResource(get())
+    }
+
     factory {
         PostPagingDataSource(get())
     }
@@ -27,7 +33,7 @@ private val uiModule = module {
 
 private val viewModelModule = module {
     viewModel {
-        PostListViewModel(get())
+        PostListViewModel(get(), get())
     }
 }
 

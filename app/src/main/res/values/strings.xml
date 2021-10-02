@@ -7,4 +7,6 @@
     <!-- post list -->
     <string name="error_load_message">Erro ao carregar a lista de notícias</string>
     <string name="error_load_retry">Tentar novamente</string>
+    <string name="post_today_label">Hoje</string>
+    <string name="post_yesterday_label">Ontem</string>
 </resources>
