@@ -6,7 +6,7 @@ import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
-class CustomWebViewClient(
+class PostWebViewClient(
     private val listener: WebViewListener
 ): WebViewClient() {
 
@@ -21,27 +21,8 @@ class CustomWebViewClient(
 
     override fun onPageFinished(view: WebView?, url: String?) {
         super.onPageFinished(view, url)
-//        view?.let {
-//            manipulateElementsOnPage(view)
-//        }
-
         listener.onContentFinishLoad()
     }
-
-//    private fun manipulateElementsOnPage(webView: WebView) {
-//        val scripts = listOf(
-////            imageScriptSource,
-////            disableGalleryScriptSource,
-////            disableNewGalleryScriptSource,
-////            commentsScriptSource,
-//            removeHeader
-//        )
-//
-////        scripts.forEach { script ->
-////            val injectedJs = "javascript:(function(){$script})()";
-////            webView.loadUrl(injectedJs)
-////        }
-//    }
 
     interface WebViewListener {
         fun onContentStartLoad()

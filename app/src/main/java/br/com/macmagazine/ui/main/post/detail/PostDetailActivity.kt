@@ -13,11 +13,11 @@ import br.com.macmagazine.common.extensions.setupToolbarWithBackButton
 import br.com.macmagazine.common.helpers.ShareHelper
 import br.com.macmagazine.databinding.ActivityPostDetailBinding
 import br.com.macmagazine.model.PostUi
-import br.com.macmagazine.ui.main.post.detail.webviewclient.CustomWebViewClient
+import br.com.macmagazine.ui.main.post.detail.webviewclient.PostWebViewClient
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class PostDetailActivity : AppCompatActivity(), CustomWebViewClient.WebViewListener {
+class PostDetailActivity : AppCompatActivity(), PostWebViewClient.WebViewListener {
 
     private val args: PostDetailActivityArgs by navArgs()
     private val viewModel: PostDetailViewModel by viewModel {
@@ -57,7 +57,7 @@ class PostDetailActivity : AppCompatActivity(), CustomWebViewClient.WebViewListe
         binding.wvPostDetailContainer.settings.javaScriptEnabled = true
         binding.wvPostDetailContainer.settings.defaultTextEncodingName = "utf-8"
         binding.wvPostDetailContainer.settings.userAgentString = "MacMagazine"
-        binding.wvPostDetailContainer.webViewClient = CustomWebViewClient(this)
+        binding.wvPostDetailContainer.webViewClient = PostWebViewClient(this)
     }
 
     private fun setupObservables() {
