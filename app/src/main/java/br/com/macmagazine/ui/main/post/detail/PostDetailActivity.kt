@@ -10,6 +10,7 @@ import androidx.navigation.navArgs
 import br.com.macmagazine.BuildConfig
 import br.com.macmagazine.R
 import br.com.macmagazine.common.extensions.setupToolbarWithBackButton
+import br.com.macmagazine.common.helpers.CustomTabHelper
 import br.com.macmagazine.common.helpers.ShareHelper
 import br.com.macmagazine.databinding.ActivityPostDetailBinding
 import br.com.macmagazine.model.PostUi
@@ -50,6 +51,14 @@ class PostDetailActivity : AppCompatActivity(), PostWebViewClient.WebViewListene
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun openComments(url: String) {
+
+    }
+
+    override fun openExternalPage(url: String) {
+        CustomTabHelper(this).openLink(url)
     }
 
     override fun onContentStartLoad() {
