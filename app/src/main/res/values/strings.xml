@@ -9,4 +9,6 @@
     <string name="error_load_retry">Tentar novamente</string>
     <string name="post_today_label">Hoje</string>
     <string name="post_yesterday_label">Ontem</string>
+
+    <string name="share_option">Compartilhar</string>
 </resources>
