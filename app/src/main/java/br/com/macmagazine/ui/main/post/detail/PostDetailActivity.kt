@@ -52,6 +52,16 @@ class PostDetailActivity : AppCompatActivity(), PostWebViewClient.WebViewListene
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onContentStartLoad() {
+        binding.wvPostDetailContainer.visibility = View.INVISIBLE
+        binding.progress.show()
+    }
+
+    override fun onContentFinishLoad() {
+        binding.wvPostDetailContainer.visibility = View.VISIBLE
+        binding.progress.hide()
+    }
+
     private fun setupWebView() {
         WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG)
         binding.wvPostDetailContainer.settings.javaScriptEnabled = true
@@ -76,13 +86,4 @@ class PostDetailActivity : AppCompatActivity(), PostWebViewClient.WebViewListene
        ShareHelper(this).shareLink(ShareHelper.SharedLink(post.title, post.detailUrl))
     }
 
-    override fun onContentStartLoad() {
-        binding.wvPostDetailContainer.visibility = View.INVISIBLE
-        binding.progress.show()
-    }
-
-    override fun onContentFinishLoad() {
-        binding.wvPostDetailContainer.visibility = View.VISIBLE
-        binding.progress.hide()
-    }
 }
