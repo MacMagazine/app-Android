@@ -16,7 +16,7 @@ class CustomWebViewClient(
 
     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
         super.onPageStarted(view, url, favicon)
-        listener.onStartLoad()
+        listener.onContentStartLoad()
     }
 
     override fun onPageFinished(view: WebView?, url: String?) {
@@ -25,7 +25,7 @@ class CustomWebViewClient(
 //            manipulateElementsOnPage(view)
 //        }
 
-        listener.onFinishLoad()
+        listener.onContentFinishLoad()
     }
 
 //    private fun manipulateElementsOnPage(webView: WebView) {
@@ -44,7 +44,7 @@ class CustomWebViewClient(
 //    }
 
     interface WebViewListener {
-        fun onStartLoad()
-        fun onFinishLoad()
+        fun onContentStartLoad()
+        fun onContentFinishLoad()
     }
 }

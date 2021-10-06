@@ -76,12 +76,12 @@ class PostDetailActivity : AppCompatActivity(), CustomWebViewClient.WebViewListe
        ShareHelper(this).shareLink(ShareHelper.SharedLink(post.title, post.detailUrl))
     }
 
-    override fun onStartLoad() {
+    override fun onContentStartLoad() {
         binding.wvPostDetailContainer.visibility = View.INVISIBLE
         binding.progress.show()
     }
 
-    override fun onFinishLoad() {
+    override fun onContentFinishLoad() {
         binding.wvPostDetailContainer.visibility = View.VISIBLE
         binding.progress.hide()
     }
