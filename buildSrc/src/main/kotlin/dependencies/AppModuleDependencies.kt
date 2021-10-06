@@ -2,6 +2,7 @@ package dependencies
 
 val appModuleDependencies = arrayListOf<String>().apply {
     add(AppDependencies.appcompat)
+    add(AppDependencies.browser)
     add(AppDependencies.coreKtx)
     add(AppDependencies.constraintLayout)
     add(AppDependencies.glide)

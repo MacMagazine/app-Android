@@ -32,4 +32,7 @@ object AppDependencies {
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     const val materialDesign = "com.google.android.material:material:${Versions.materialDesign}"
     const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    // web
+    const val browser = "androidx.browser:browser:1.3.0"
 }
