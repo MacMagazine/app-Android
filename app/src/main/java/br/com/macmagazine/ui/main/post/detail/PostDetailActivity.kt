@@ -1,14 +1,18 @@
 package br.com.macmagazine.ui.main.post.detail
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
 import br.com.macmagazine.BuildConfig
+import br.com.macmagazine.R
 import br.com.macmagazine.common.extensions.setupToolbarWithBackButton
+import br.com.macmagazine.common.helpers.ShareHelper
 import br.com.macmagazine.databinding.ActivityPostDetailBinding
+import br.com.macmagazine.model.PostUi
 import br.com.macmagazine.ui.main.post.detail.webviewclient.CustomWebViewClient
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -34,9 +38,15 @@ class PostDetailActivity : AppCompatActivity(), CustomWebViewClient.WebViewListe
         setupObservables()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.shared_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
+        when (item.itemId) {
+            android.R.id.home -> finish()
+            R.id.share -> onShareClick()
         }
 
         return super.onOptionsItemSelected(item)
@@ -54,6 +64,16 @@ class PostDetailActivity : AppCompatActivity(), CustomWebViewClient.WebViewListe
         viewModel.detailUrl.observe(this) { url ->
             binding.wvPostDetailContainer.loadUrl(url)
         }
+
+        viewModel.sharePost.observe(this, ::sharePost)
+    }
+
+    private fun onShareClick() {
+        viewModel.onShareClick()
+    }
+
+    private fun sharePost(post: PostUi.PostItemUi) {
+       ShareHelper(this).shareLink(ShareHelper.SharedLink(post.title, post.detailUrl))
     }
 
     override fun onStartLoad() {
