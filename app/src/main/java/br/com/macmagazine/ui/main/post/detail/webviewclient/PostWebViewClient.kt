@@ -14,7 +14,9 @@ private const val SPACE_URL_ENCODING = "%20"
 
 class PostWebViewClient(
     private val listener: WebViewListener
-): WebViewClient() {
+) : WebViewClient() {
+
+    private var alreadyFinished = false
 
     override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
         handler?.proceed()
@@ -27,29 +29,34 @@ class PostWebViewClient(
 
     override fun onPageFinished(view: WebView?, url: String?) {
         super.onPageFinished(view, url)
+        alreadyFinished = true
         listener.onContentFinishLoad()
     }
 
     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest): Boolean {
-        val url = request.url.toString()
+        if (alreadyFinished) {
+            val url = request.url.toString()
 
-        when {
-            url.contains(COMMENTS_PREFIX) -> {
-                val urlSanitized = url.replace(COMMENTS_PREFIX, "").replace(SPACE_URL_ENCODING, " ")
-                listener.openComments(urlSanitized)
+            when {
+                url.contains(COMMENTS_PREFIX) -> {
+                    val urlSanitized = url.replace(COMMENTS_PREFIX, "").replace(SPACE_URL_ENCODING, " ")
+                    listener.openComments(urlSanitized)
+                }
+                url.contains(DISQUS_THREAD_CLASS_PREFIX) -> {
+                    listener.openComments(url)
+                }
+                url.contains(PKPASS_EXTENSION) -> {
+                    // openPassKit(url: url)
+                }
+                else -> {
+                    listener.openExternalPage(url)
+                }
             }
-            url.contains(DISQUS_THREAD_CLASS_PREFIX) -> {
-                listener.openComments(url)
-            }
-            url.contains(PKPASS_EXTENSION) -> {
-                // openPassKit(url: url)
-            }
-            else -> {
-                listener.openExternalPage(url)
-            }
+
+            return true
+        } else {
+            return false
         }
-
-        return true
     }
 
     interface WebViewListener {

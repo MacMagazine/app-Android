@@ -1,12 +1,12 @@
 package br.com.macmagazine.common.helpers
 
+import android.app.Activity
 import android.graphics.Color
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 
-class CustomTabHelper(private val activity: AppCompatActivity) {
+class CustomTabHelper(private val activity: Activity) {
 
     fun openLink(url: String) {
         val defaultColors = CustomTabColorSchemeParams.Builder()
@@ -14,6 +14,7 @@ class CustomTabHelper(private val activity: AppCompatActivity) {
             .build()
 
         val builder = CustomTabsIntent.Builder()
+        builder.setSession()
         builder.setDefaultColorSchemeParams(defaultColors)
 
         val customTabsIntent = builder.build()
