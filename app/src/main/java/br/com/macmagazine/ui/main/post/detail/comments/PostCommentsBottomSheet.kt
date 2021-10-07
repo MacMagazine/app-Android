@@ -1,19 +1,22 @@
 package br.com.macmagazine.ui.main.post.detail.comments
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatImageView
 import br.com.macmagazine.R
+import br.com.macmagazine.common.helpers.CustomTabHelper
 import br.com.macmagazine.view.ObservableWebView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class PostCommentsBottomSheet(context: Context) : FrameLayout(context) {
+class PostCommentsBottomSheet(private val activity: Activity) : FrameLayout(activity) {
 
-    private val bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(context)
+    private val bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(activity)
     private var currentWebViewScrollY = 0
 
     private lateinit var cloneIcon: AppCompatImageView
@@ -107,6 +110,12 @@ class PostCommentsBottomSheet(context: Context) : FrameLayout(context) {
             }
 
             web.evaluateJavascript(s, null)
+        }
+
+        override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest): Boolean {
+            val url = request.url.toString()
+            CustomTabHelper(activity).openLink(url)
+            return true
         }
     }
 }
