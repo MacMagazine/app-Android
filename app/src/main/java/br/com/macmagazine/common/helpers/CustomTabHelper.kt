@@ -14,7 +14,6 @@ class CustomTabHelper(private val activity: Activity) {
             .build()
 
         val builder = CustomTabsIntent.Builder()
-        builder.setSession()
         builder.setDefaultColorSchemeParams(defaultColors)
 
         val customTabsIntent = builder.build()
