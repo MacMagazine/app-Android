@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.FileProvider
+import androidx.core.graphics.drawable.toBitmap
 import br.com.macmagazine.BuildConfig
+import br.com.macmagazine.R
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -21,6 +24,10 @@ object PostCommentsCustomTab {
 
         val builder = CustomTabsIntent.Builder()
         builder.setDefaultColorSchemeParams(defaultColors)
+
+        AppCompatResources.getDrawable(context, R.drawable.ic_arrow_back)?.mutate()?.let {
+            builder.setCloseButtonIcon(it.toBitmap())
+        }
 
         val customTabsIntent = builder.build()
 
