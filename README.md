@@ -7,4 +7,4 @@ Versão do aplicativo do MacMagazine para Android para que você possa acompanha
 - Compartilhamento de posts
 
 ## Bug Reporting e Feature request
-Use as [Issues](https://github.com/MacMagazine/app-iOS/issues) para cadastrar problemas encontrados ou features desejadas.
+Use as [Issues](https://github.com/MacMagazine/app-Android/issues) para cadastrar problemas encontrados ou features desejadas.
