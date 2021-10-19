@@ -35,4 +35,5 @@ object AppDependencies {
 
     // web
     const val browser = "androidx.browser:browser:1.3.0"
+    const val androidBrowserHelper = "com.google.androidbrowserhelper:androidbrowserhelper:2.2.0"
 }

@@ -23,6 +23,7 @@ object PostCommentsCustomTab {
             .build()
 
         val builder = CustomTabsIntent.Builder()
+
         builder.setDefaultColorSchemeParams(defaultColors)
 
         AppCompatResources.getDrawable(context, R.drawable.ic_arrow_back)?.mutate()?.let {
@@ -41,19 +42,20 @@ object PostCommentsCustomTab {
 
     private fun createUri(url: String, context: Context): Uri? {
         try {
-            //Create an empty html file in external cache directory
+            // Create an empty html file in external cache directory
             val redirect = File(context.externalCacheDir, "redirect.html")
 
-            //Open and read local html file from asset folder
+            // Open and read local html file from asset folder
             var templateString = context.assets.open("comments.html").bufferedReader().use { it.readText() }
 
+            // Replace urlComment
             templateString = templateString.replace("{{urlComment}}", url)
 
-            //Write the content of file in redirect.html
+            // Write the content of file in redirect.html
             val fileOutputStream = FileOutputStream(redirect)
             fileOutputStream.write(templateString.toByteArray())
 
-            //Get the uri of redirect.html using content provider
+            // Get the uri of redirect.html using content provider
             val uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", redirect)
 
             return uri
