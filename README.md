@@ -8,3 +8,5 @@ Versão do aplicativo do MacMagazine para Android para que você possa acompanha
 
 ## Bug Reporting e Feature request
 Use as [Issues](https://github.com/MacMagazine/app-Android/issues) para cadastrar problemas encontrados ou features desejadas.
+
+Equipe MM :-)
